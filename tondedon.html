@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+      #header {
+        height: 80px;
+        transition: all 0.5s;
+        z-index: 997;
+        transition: all 0.5s;
+        padding: 20px 0;
+        background: rgb(20, 20, 20);
+        box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
+      }
+
+      #header .logo {
+        font-size: 36px;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        font-weight: 400;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #fff;
+      }
+
+      /*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+      /* Desktop Navigation */
+
+      .main-nav,
+      .main-nav * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .main-nav > ul > li {
+        position: relative;
+        white-space: nowrap;
+        float: left;
+      }
+
+      .main-nav a {
+        display: block;
+        position: relative;
+        color: #fbfcfd;
+        padding: 10px 15px;
+        transition: 0.3s;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+      }
+
+      .main-nav a:hover,
+      .main-nav .active > a,
+      .main-nav li:hover > a {
+        color: #4cdd2f;
+        text-decoration: none;
+      }
+
+      .main-nav .drop-down ul {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: calc(100% + 30px);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        padding: 10px 0;
+        background: rgb(20, 20, 20);
+        box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+        transition: ease all 0.3s;
+      }
+
+      .main-nav .drop-down:hover > ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+      }
+
+      .main-nav .drop-down li {
+        min-width: 180px;
+        position: relative;
+      }
+
+      .main-nav .drop-down ul a {
+        padding: 10px 20px;
+        font-size: 13px;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .main-nav .drop-down ul a:hover,
+      .main-nav .drop-down ul .active > a,
+      .main-nav .drop-down ul li:hover > a {
+        color: #0acf0a;
+      }
+
+      .main-nav .drop-down > a:after {
+        content: '\f107';
+        font-family: FontAwesome;
+        padding-left: 10px;
+      }
+
+      .main-nav .drop-down .drop-down ul {
+        top: 0;
+        left: calc(100% - 30px);
+      }
+
+      .main-nav .drop-down .drop-down:hover > ul {
+        opacity: 1;
+        top: 0;
+        left: 100%;
+      }
+
+      .main-nav .drop-down .drop-down > a {
+        padding-right: 35px;
+      }
+
+      .main-nav .drop-down .drop-down > a:after {
+        content: '\f105';
+        position: absolute;
+        right: 15px;
+      }
+
+      /* Mobile Navigation */
+
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 9999;
+        overflow-y: auto;
+        left: -260px;
+        width: 260px;
+        padding-top: 18px;
+        background: rgba(19, 39, 57, 0.8);
+        transition: 0.4s;
+      }
+
+      .mobile-nav * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .mobile-nav a {
+        display: block;
+        position: relative;
+        color: #fff;
+        padding: 10px 20px;
+        font-weight: 600;
+      }
+
+      .mobile-nav a:hover,
+      .mobile-nav .active > a,
+      .mobile-nav li:hover > a {
+        color: #74b5fc;
+        text-decoration: none;
+      }
+
+      .mobile-nav .drop-down > a:after {
+        content: '\f078';
+        font-family: FontAwesome;
+        padding-left: 10px;
+        position: absolute;
+        right: 15px;
+      }
+
+      .mobile-nav .active.drop-down > a:after {
+        content: '\f077';
+      }
+
+      .mobile-nav .drop-down > a {
+        padding-right: 35px;
+      }
+
+      .mobile-nav .drop-down ul {
+        display: none;
+        overflow: hidden;
+      }
+
+      .mobile-nav .drop-down li {
+        padding-left: 20px;
+      }
+
+      .mobile-nav-toggle {
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 9998;
+        border: 0;
+        background: none;
+        font-size: 24px;
+        transition: all 0.4s;
+        outline: none !important;
+        line-height: 1;
+        cursor: pointer;
+        text-align: right;
+      }
+
+      .mobile-nav-toggle i {
+        margin: 18px 18px 0 0;
+        color: #fdfdfd;
+      }
+
+      .mobile-nav-overly {
+        width: 100%;
+        height: 100%;
+        z-index: 9997;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background: rgba(19, 39, 57, 0.8);
+        overflow: hidden;
+        display: none;
+      }
+
+      .mobile-nav-active {
+        overflow: hidden;
+      }
+
+      .mobile-nav-active .mobile-nav {
+        left: 0;
+      }
+
+      .mobile-nav-active .mobile-nav-toggle i {
+        color: #fff;
+      }
+
+      /*--------------------------------------------------------------
+# Responsive Media Queries
+--------------------------------------------------------------*/
+
+      @media (max-width: 991px) {
+        #header {
+          height: 60px;
+          padding: 10px 0;
+        }
+
+        #header .logo {
+          font-size: 28px;
+          padding: 8px 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .back-to-top {
+          bottom: 15px;
+        }
+      }
+
+      /*------------------------------------------------ nav bar close--------------------------------------------------- */
+
+      .c {
+        margin-top: 100px;
+      }
+
+      p {
+        text-align: justify;
+      }
+
+      body {
+        background-image: url('/img/Black-Texture.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+      }
+
+      .index-one h1 {
+        font-size: 1.8em;
+        color: #fff;
+      }
+
+      .index-one p {
+        font-size: 1.2em;
+        color: #fff;
+      }
+
+      .index-two h1 {
+        font-size: 1.8em;
+        color: #fff;
+      }
+
+      .index-two p {
+        font-size: 1.2em;
+        line-height: 1.8em;
+        color: #fff;
+      }
+
+      .index-two img {
+        width: 100%;
+        height: 350px;
+      }
+
+      .navbar_top {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navigation bar start       -->
+    <div class="navbar_top">
+      <header id="header">
+        <div class="container">
+          <div class="logo float-left">
+            <!-- <a href="#" class="logo">EARN MONEY</a> -->
+            <svg
+              width="124"
+              height="31"
+              viewBox="0 0 124 31"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.7153 27.2237C39.5902 26.9438 39.3459 26.7651 38.9706 26.6639C39.2625 26.5745 39.4651 26.4137 39.5723 26.1814C39.6319 26.0504 39.6617 25.9075 39.6617 25.7347C39.6617 25.562 39.6319 25.4191 39.5664 25.2821C39.3936 24.8949 38.9765 24.6924 38.3867 24.6924H36.6528V28.8974H38.3747C39.0421 28.8974 39.5187 28.677 39.7153 28.2422C39.7809 28.0993 39.8107 27.9325 39.8107 27.724C39.8107 27.5215 39.7809 27.3607 39.7153 27.2237ZM37.5346 25.3059H38.0173C38.3509 25.3059 38.5892 25.3833 38.6786 25.5858C38.7144 25.6633 38.7322 25.7407 38.7322 25.8479C38.7322 25.9611 38.7144 26.0504 38.6786 26.1278C38.5892 26.3303 38.3569 26.4256 38.0351 26.4256H37.5346V25.3059ZM38.8037 27.9623C38.7024 28.1886 38.4343 28.278 38.0411 28.278H37.5346V27.051H38.059C38.4343 27.051 38.6965 27.1404 38.8037 27.3786C38.8454 27.4679 38.8633 27.5513 38.8633 27.6704C38.8633 27.7836 38.8454 27.8789 38.8037 27.9623Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M42.2854 25.9492L41.5645 27.9921L40.8614 25.9492H39.9558L41.1176 28.8736L40.6112 30.1005H41.4513L41.9458 28.8974L43.1672 25.9492H42.2854Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M44.5602 28.8974H47.2533V28.1648H45.442V27.1225H47.2355V26.4018H45.442V25.425H47.2533V24.6924H44.5602V28.8974Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M48.5705 28.8974H49.494L50.6201 25.9492H49.7323L49.0352 27.9623L48.3321 25.9492H47.4384L48.5705 28.8974Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M52.7218 28.1946C52.6086 28.3018 52.4239 28.3494 52.2094 28.3494C51.8757 28.3494 51.6493 28.2303 51.5421 27.998C51.5003 27.8968 51.4765 27.7777 51.4646 27.6347H53.7287C53.7287 27.2237 53.6989 26.9557 53.5798 26.6698C53.3533 26.1695 52.8588 25.8658 52.1736 25.8658C51.4884 25.8658 50.9939 26.1636 50.7734 26.6698C50.6781 26.8783 50.6305 27.1046 50.6305 27.4143C50.6305 27.7121 50.6722 27.9623 50.7734 28.1767C50.9999 28.6889 51.5182 28.9748 52.2272 28.9748C52.6801 28.9748 53.0912 28.8497 53.3653 28.6055C53.5619 28.4209 53.687 28.1886 53.7108 27.8908H52.8826C52.8648 27.998 52.8111 28.1171 52.7218 28.1946ZM52.1855 26.4852C52.4954 26.4852 52.7099 26.6043 52.8171 26.8306C52.8529 26.914 52.8767 26.9915 52.8886 27.1106H51.4706C51.4825 27.0034 51.5063 26.9259 51.5421 26.8426C51.6493 26.6043 51.8698 26.4852 52.1855 26.4852Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M55.8877 25.8658C55.4766 25.8658 55.1787 26.0206 54.9761 26.3065V25.9492H54.1539V28.8974H54.9761V27.2416C54.9761 26.783 55.1966 26.5507 55.5898 26.5507C55.9652 26.5507 56.1558 26.7473 56.1558 27.2118V28.8974H56.9781V27.0391C56.9781 26.2708 56.5789 25.8658 55.8877 25.8658Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M58.6155 28.951C58.8122 28.951 59.0267 28.9212 59.2173 28.8855V28.2303C59.0981 28.2601 58.979 28.272 58.8837 28.272C58.6096 28.272 58.4725 28.1469 58.4725 27.8193V26.6103H59.2352V25.9492H58.4725V25.2464H57.6503V25.9492H57.2273V26.6103H57.6503V27.9623C57.6503 28.6711 57.9423 28.951 58.6155 28.951Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M62.5371 26.5924C62.3346 26.1398 61.9294 25.8658 61.3634 25.8658C60.9642 25.8658 60.6484 26.0028 60.4339 26.2827V24.6924H59.6117V28.8974H60.416V28.54C60.6305 28.8319 60.9523 28.9748 61.3634 28.9748C61.9294 28.9748 62.3346 28.7068 62.5371 28.2541C62.6384 28.0218 62.698 27.7479 62.698 27.4262C62.698 27.0987 62.6384 26.8187 62.5371 26.5924ZM61.7328 27.9385C61.6255 28.1707 61.4051 28.2958 61.1131 28.2958C60.6841 28.2958 60.4279 28.0159 60.4279 27.5037V27.3429C60.4279 26.8306 60.6841 26.5507 61.1131 26.5507C61.4051 26.5507 61.6255 26.6758 61.7328 26.914C61.7864 27.0391 61.8162 27.1999 61.8162 27.4262C61.8162 27.6466 61.7864 27.8074 61.7328 27.9385Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M63.1202 28.8974H63.9425V26.914C63.9425 26.7294 63.9604 26.6817 64.0318 26.652C64.1033 26.789 64.2583 26.8783 64.437 26.8783C64.7349 26.8783 64.9315 26.6698 64.9315 26.378C64.9315 26.0802 64.7349 25.8777 64.4251 25.8777C64.2166 25.8777 64.0736 25.967 63.9365 26.1814V25.9492H63.1202V28.8974Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M65.6844 25.5799C65.9465 25.5799 66.1372 25.3953 66.1372 25.1451C66.1372 24.8949 65.9465 24.7103 65.6844 24.7103C65.4103 24.7103 65.2196 24.8949 65.2196 25.1451C65.2196 25.3953 65.4103 25.5799 65.6844 25.5799ZM65.2673 28.8974H66.0895V25.9492H65.2673V28.8974Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M67.8379 28.951C68.0345 28.951 68.249 28.9212 68.4397 28.8855V28.2303C68.3205 28.2601 68.2014 28.272 68.106 28.272C67.832 28.272 67.6949 28.1469 67.6949 27.8193V26.6103H68.4576V25.9492H67.6949V25.2464H66.8727V25.9492H66.4497V26.6103H66.8727V27.9623C66.8727 28.6711 67.1646 28.951 67.8379 28.951Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                d="M70.7592 28.1946C70.646 28.3018 70.4613 28.3494 70.2468 28.3494C69.9132 28.3494 69.6868 28.2303 69.5795 27.998C69.5378 27.8968 69.514 27.7777 69.5021 27.6347H71.7662C71.7662 27.2237 71.7364 26.9557 71.6172 26.6698C71.3908 26.1695 70.8963 25.8658 70.2111 25.8658C69.5259 25.8658 69.0314 26.1636 68.8109 26.6698C68.7156 26.8783 68.6679 27.1046 68.6679 27.4143C68.6679 27.7121 68.7096 27.9623 68.8109 28.1767C69.0373 28.6889 69.5557 28.9748 70.2647 28.9748C70.7175 28.9748 71.1287 28.8497 71.4027 28.6055C71.5993 28.4209 71.7245 28.1886 71.7483 27.8908H70.9201C70.9022 27.998 70.8486 28.1171 70.7592 28.1946ZM70.223 26.4852C70.5328 26.4852 70.7473 26.6043 70.8546 26.8306C70.8903 26.914 70.9142 26.9915 70.9261 27.1106H69.508C69.5199 27.0034 69.5438 26.9259 69.5795 26.8426C69.6868 26.6043 69.9072 26.4852 70.223 26.4852Z"
+                fill="white"
+                fill-opacity="0.8"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M14.5189 29.0271C22.5374 29.0271 29.0378 22.5292 29.0378 14.5136C29.0378 6.49795 22.5374 0 14.5189 0C6.50033 0 0 6.49795 0 14.5136C0 22.5292 6.50033 29.0271 14.5189 29.0271Z"
+                fill="#6064FF"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M21.8416 19.0952L21.8351 19.1075L21.8345 19.1071C21.6203 19.4626 21.246 19.6559 20.7935 19.6559C20.108 19.6559 19.5523 19.1005 19.5523 18.4154C19.5523 18.2357 19.6302 18.0794 19.7152 17.9089L19.7152 17.9089L19.7152 17.9089C19.7431 17.8527 19.7719 17.7951 19.7988 17.7345L19.7951 17.732C20.1471 16.9847 20.3439 16.15 20.3439 15.2693C20.3439 12.0721 17.7505 9.48032 14.5514 9.48032C11.3524 9.48032 8.75899 12.0721 8.75899 15.2693C8.75899 16.1505 8.95604 16.9858 9.3085 17.7335C9.31356 17.7424 9.3182 17.7513 9.32241 17.7602C9.43941 18.0066 9.55043 18.2446 9.55043 18.4873C9.55043 19.1724 8.99471 19.7278 8.30919 19.7278C7.82629 19.7278 7.43931 19.5097 7.25555 19.156C7.24808 19.1416 7.24051 19.1263 7.23292 19.1101C6.62225 17.9586 6.27637 16.6453 6.27637 15.2513C6.27637 10.6939 9.97313 6.99933 14.5333 6.99933C19.0935 6.99933 22.7903 10.6939 22.7903 15.2513C22.7903 16.5944 22.4692 17.8625 21.8996 18.9833C21.8917 19.0006 21.8836 19.0173 21.8755 19.0333C21.8647 19.0544 21.8534 19.0751 21.8416 19.0952ZM16.6742 16.9592C16.6742 18.0911 15.7561 19.0087 14.6235 19.0087C13.4909 19.0087 12.5727 18.0911 12.5727 16.9592C12.5727 15.8273 13.4909 14.9097 14.6235 14.9097C15.7561 14.9097 16.6742 15.8273 16.6742 16.9592Z"
+                fill="white"
+              ></path>
+              <path
+                d="M36.6751 10.8297H33.0918V8.94379H42.26V10.8297H38.6766V20.524H36.6751V10.8297Z"
+                fill="white"
+              ></path>
+              <path
+                d="M50.7559 20.7225C49.8842 20.7225 49.0879 20.5681 48.367 20.2593C47.646 19.9394 47.0273 19.5093 46.5107 18.9689C45.9942 18.4285 45.5907 17.7999 45.3002 17.083C45.0096 16.3551 44.8643 15.5831 44.8643 14.767V14.7339C44.8643 13.9177 45.0096 13.1512 45.3002 12.4344C45.5907 11.7065 45.9996 11.0723 46.5269 10.5319C47.0542 9.98049 47.6783 9.54485 48.3993 9.22502C49.1202 8.90519 49.9165 8.74527 50.7881 8.74527C51.6598 8.74527 52.4561 8.90519 53.177 9.22502C53.898 9.53382 54.5167 9.95843 55.0333 10.4988C55.5498 11.0392 55.9533 11.6734 56.2438 12.4013C56.5344 13.1182 56.6797 13.8847 56.6797 14.7008V14.7339C56.6797 15.55 56.5344 16.322 56.2438 17.0499C55.9533 17.7668 55.5444 18.4009 55.0171 18.9524C54.4898 19.4928 53.8657 19.9229 53.1447 20.2427C52.4238 20.5626 51.6275 20.7225 50.7559 20.7225ZM50.7881 18.8366C51.3477 18.8366 51.8588 18.7318 52.3215 18.5222C52.795 18.3017 53.1986 18.0094 53.5321 17.6455C53.8657 17.2815 54.124 16.8514 54.3069 16.3551C54.5006 15.8588 54.5974 15.3294 54.5974 14.767V14.7339C54.5974 14.1714 54.5006 13.642 54.3069 13.1457C54.124 12.6384 53.8603 12.2028 53.516 11.8388C53.1824 11.4639 52.7789 11.1661 52.3054 10.9455C51.8319 10.7249 51.3154 10.6146 50.7559 10.6146C50.1963 10.6146 49.6798 10.7249 49.2063 10.9455C48.7436 11.155 48.3455 11.4473 48.0119 11.8223C47.6783 12.1862 47.4146 12.6164 47.221 13.1126C47.038 13.6089 46.9466 14.1383 46.9466 14.7008V14.7339C46.9466 15.2963 47.038 15.8257 47.221 16.322C47.4146 16.8183 47.6783 17.2539 48.0119 17.6289C48.3562 18.0039 48.7651 18.3017 49.2386 18.5222C49.7121 18.7318 50.2286 18.8366 50.7881 18.8366Z"
+                fill="white"
+              ></path>
+              <path
+                d="M60.6925 8.94379H62.5326L68.5855 16.9506V8.94379H70.5386V20.524H68.876L62.6456 12.2855V20.524H60.6925V8.94379Z"
+                fill="white"
+              ></path>
+              <path
+                d="M75.0587 8.94379H83.436V10.7635H77.0441V13.7744H82.7096V15.5941H77.0441V18.7042H83.5167V20.524H75.0587V8.94379Z"
+                fill="white"
+              ></path>
+              <path
+                d="M87.4861 8.94379H91.699C92.5813 8.94379 93.3884 9.09267 94.1201 9.39045C94.8626 9.6772 95.4975 10.0797 96.0248 10.5981C96.5628 11.1164 96.9771 11.7285 97.2676 12.4344C97.5582 13.1292 97.7035 13.8847 97.7035 14.7008V14.7339C97.7035 15.55 97.5582 16.311 97.2676 17.0168C96.9771 17.7227 96.5628 18.3348 96.0248 18.8531C95.4975 19.3715 94.8626 19.7795 94.1201 20.0773C93.3884 20.3751 92.5813 20.524 91.699 20.524H87.4861V8.94379ZM89.4715 10.7966V18.6711H91.699C92.2908 18.6711 92.8288 18.5774 93.3131 18.3899C93.7973 18.1914 94.2062 17.9212 94.5398 17.5793C94.8841 17.2264 95.1478 16.8128 95.3307 16.3386C95.5244 15.8533 95.6212 15.3294 95.6212 14.767V14.7339C95.6212 14.1714 95.5244 13.6475 95.3307 13.1623C95.1478 12.677 94.8841 12.2634 94.5398 11.9215C94.2062 11.5686 93.7973 11.2929 93.3131 11.0944C92.8288 10.8959 92.2908 10.7966 91.699 10.7966H89.4715Z"
+                fill="white"
+              ></path>
+              <path
+                d="M101.726 8.94379H110.103V10.7635H103.712V13.7744H109.377V15.5941H103.712V18.7042H110.184V20.524H101.726V8.94379Z"
+                fill="white"
+              ></path>
+              <path
+                d="M114.154 8.94379H115.994L122.047 16.9506V8.94379H124V20.524H122.337L116.107 12.2855V20.524H114.154V8.94379Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+          <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+              <li class="drop-down">
+                <a href="#">Why ToneDen?</a>
+                <ul>
+                  <li class="active">
+                    <a href="#"
+                      >Tour <br />
+                      <span>An Overview Of What we Can do</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      >Advertising <br />
+                      <span>Our Automated Social Ads Platform </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      >Growth Tools <br />
+                      Free tools to grow your Brand
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#">Playbooks</a></li>
+              <li class="drop-down">
+                <a href="">Made for you</a>
+                <ul>
+                  <li>
+                    <a href="#"
+                      >For Creators <br />
+                      <span>Grow your Audience</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      >For Event Marketers <br />
+                      <span>Sell Out your Events</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      >For E-commerce Marketers <br />
+                      <span>Win more customers</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#">Success Stories</a></li>
+              <li><a href="#">Sign In</a></li>
+              <li><a href="#">Create a Free Account</a></li>
+            </ul>
+          </nav>
+          <!-- main-nav -->
+        </div>
+      </header>
+    </div>
+    <!-- #header -->
+
+    <style>
+      .top_one_sec {
+        background-color: #202020;
+      }
+
+      .main_head {
+        color: #fff;
+      }
+      .green_color {
+        color: green;
+      }
+      p {
+        color: #fff;
+      }
+      .green_btn {
+        background-color: green;
+        color: #fff;
+        padding: 25px 50px;
+        text-transform: uppercase;
+      }
+      .img_one {
+        width: 500px;
+      }
+      .top_one_two {
+        background-color: #000;
+      }
+      .h2_heading {
+        color: #fff;
+      }
+      .top_two_sec {
+        width: 80%;
+        padding-top: 30px;
+      }
+
+      .welcome-section-svg-1 {
+        width: 100%;
+      }
+      .top_two_sec {
+        position: relative;
+      }
+      .sec_two_ab {
+        position: absolute;
+        top: 20%;
+        right: 20%;
+      }
+    </style>
+
+    <section class="top_one_sec">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <img
+              src="https://st.toneden.io/production/images/new-landing/art/where-brands-grow.png"
+              alt=""
+              class="img-fluid img_one"
+            />
+          </div>
+          <div class="col-md-6 my-auto">
+            <h1 class="main_head">
+              Where Brands <span class="green_color">Grow</span>
+            </h1>
+            <p>
+              ToneDen is a friendly social marketing platform that gives you the
+              power to reach and sell to the people who matter.
+            </p>
+            <a href="#" class="btn green_btn">Create a Free Account</a>
+            <p class="text-muted mt-3">
+              Join over one million creators and businesses using ToneDen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="top_one_two">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 my-auto">
+            <div class="top_two_sec">
+              <h2 class="h2_heading">
+                Meet the <span class="green_color">easiest</span> way to engage
+                your audience.
+              </h2>
+              <p>
+                It’s simple. Find new customers, build lasting relationships,
+                drive higher sales— while saving time and making more money.
+              </p>
+              <a href="#" class="btn green_btn">See How Its Works</a>
+            </div>
+          </div>
+          <div class="col-md-6 mt-5">
+            <div class="sec_two">
+              <svg
+                class="welcome-section-svg-1"
+                width="654px"
+                height="679px"
+                viewBox="0 0 654 679"
+                version="1.1"
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="linearGradient-1"
+                  >
+                    <stop stop-color="#00B1FF" offset="0%"></stop>
+                    <stop stop-color="#007BDF" offset="100%"></stop>
+                  </linearGradient>
+                </defs>
+                <g
+                  id="welcome-svg-2"
+                  transform="translate(-569.000000, -914.000000)"
+                  fill="url(#linearGradient-1)"
+                >
+                  <path
+                    d="M939.513805,1566.89809 C1095.41543,1625.32982 1309.37454,1600.1731 1186.48177,1319.80121 C1063.58901,1039.42931 1296.66809,889.747467 1162.72533,917.216503 C950.168429,960.807761 704.200794,1015.29678 660.870589,1052.89696 C608.660184,1098.20301 1081.5575,1242.0573 601.479496,1306.43123 C467.012447,1324.462 783.612183,1508.46636 939.513805,1566.89809 Z"
+                    id="Oval"
+                  ></path>
+                </g>
+              </svg>
+              <div class="sec_two_ab">
+                <img
+                  src="https://st.toneden.io/production/images/new-landing/screens/dashboard.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .top_one_three {
+        background-color: #202020;
+        height: auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .top_one_three h3,
+      p {
+        color: #fff;
+        text-align: center;
+      }
+      .sec_three_one {
+        position: relative;
+      }
+      .sec_three_ab {
+        position: absolute;
+        bottom: 0;
+        left: 20%;
+      }
+      .sec_three_img {
+        width: 250px;
+        height: 300px;
+      }
+      .new_card {
+        position: relative;
+      }
+      .sec_three_ab_content {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        left: 20%;
+      }
+      .sec_new_three {
+        margin-bottom: 140px;
+      }
+      .sec_three_one {
+        margin-bottom: 120px;
+      }
+    </style>
+    <section class="top_one_three">
+      <div class="container">
+        <div class="sec_new_three">
+          <h3><span class="green_color">Own</span> social marketing</h3>
+          <p class="text-muted">
+            Whether you’re a big deal or a big deal in the making, ToneDen is
+            here to help. We’ve got you.
+          </p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="sec_three_one">
+              <svg
+                class="persona-svg-1"
+                width="269px"
+                height="229px"
+                viewBox="0 0 269 229"
+                version="1.1"
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="personaGradient-2"
+                  >
+                    <stop stop-color="#7C4DFF" offset="0%"></stop>
+                    <stop stop-color="#5B28E6" offset="100%"></stop>
+                  </linearGradient>
+                </defs>
+                <g
+                  id="welcome-svg-2"
+                  transform="translate(-134.000000, -720.000000)"
+                  fill="url(#personaGradient-2)"
+                >
+                  <path
+                    d="M224.118421,934.447161 C310.614811,885.382834 360.612724,853.188388 360.612724,799.269933 C360.612724,745.351479 265.616689,833.314568 224.118421,739.191166 C182.620153,645.067763 141.639371,694.032151 126.62249,836.819163 C111.605609,979.606176 137.622031,983.511487 224.118421,934.447161 Z"
+                    id="Oval-2"
+                    transform="translate(241.612724, 826.834112) rotate(249.000000) translate(-241.612724, -826.834112)"
+                  ></path>
+                </g>
+              </svg>
+              <div class="sec_three_ab">
+                <div class="card new_card">
+                  <img
+                    src="https://st.toneden.io/production/images/new-landing/personas/creator-small.png"
+                    alt=""
+                    class="img_card sec_three_img"
+                  />
+                  <div class="sec_three_ab_content text-center">
+                    <span class="text-white">for</span
+                    ><span class="green_color"> Creators</span>
+                    <p class="text-center">Build a loyal following</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="sec_three_one">
+              <svg
+                class="persona-svg-2"
+                width="266px"
+                height="203px"
+                viewBox="0 0 266 153"
+                version="1.1"
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="personaGradient-3"
+                  >
+                    <stop stop-color="#FF9100" offset="0%"></stop>
+                    <stop stop-color="#FF5500" offset="100%"></stop>
+                  </linearGradient>
+                </defs>
+                <g
+                  id="welcome-svg-3"
+                  transform="translate(-672.000000, -2092.000000)"
+                  fill="url(#personaGradient-3)"
+                >
+                  <path
+                    d="M801.61657,2255.87711 C818.480206,2111.35184 889.11657,2216.68284 889.11657,2168.33427 C889.11657,2119.98569 846.719837,1947.614 801.61657,2080.79143 C756.513303,2213.96886 714.11657,2119.98569 714.11657,2168.33427 C714.11657,2182.8171 720.454799,2209.44682 729.787294,2235.76201 C751.609814,2297.2958 789.804441,2357.10979 801.61657,2255.87711 Z"
+                    id="Oval-3"
+                    transform="translate(801.616570, 2170.785030) rotate(414.000000) translate(-801.616570, -2170.785030)"
+                  ></path>
+                </g>
+              </svg>
+              <div class="sec_three_ab">
+                <div class="card new_card">
+                  <img
+                    src="https://st.toneden.io/production/images/new-landing/personas/event-small.png"
+                    alt=""
+                    class="img_card sec_three_img"
+                  />
+                  <div class="sec_three_ab_content text-center">
+                    <span class="text-white">for</span
+                    ><span class="green_color"> Creators</span>
+                    <p class="text-center">Build a loyal following</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="sec_three_one">
+              <svg
+                class="persona-svg-3"
+                width="182px"
+                height="207px"
+                viewBox="0 0 182 117"
+                version="1.1"
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="personaGradient-4"
+                  >
+                    <stop stop-color="#00FF99" offset="0%"></stop>
+                    <stop stop-color="#00DB88" offset="100%"></stop>
+                  </linearGradient>
+                </defs>
+                <g
+                  id="welcome-svg-4"
+                  transform="translate(-1158.000000, -2456.000000)"
+                  fill="url(#personaGradient-4)"
+                >
+                  <path
+                    d="M1234,2550 C1227.92487,2550 1223,2545.07513 1223,2539 C1223,2532.92487 1227.92487,2528 1234,2528 C1240.07513,2528 1245,2532.92487 1245,2539 C1245,2545.07513 1240.07513,2550 1234,2550 Z M1336,2518 C1323.06316,2548.71017 1300.80682,2563.02955 1273.33534,2571.89132 C1245.86386,2580.75309 1348.66037,2490.95384 1215.73385,2514.28983 C1082.80733,2537.62582 1216.91542,2459.64226 1273.33534,2456.68834 C1329.75527,2453.73441 1348.93684,2487.28983 1336,2518 Z"
+                    id="Oval-4"
+                  ></path>
+                </g>
+              </svg>
+              <div class="sec_three_ab">
+                <div class="card new_card">
+                  <img
+                    src="https://st.toneden.io/production/images/new-landing/personas/ecom-small.png"
+                    alt=""
+                    class="img_card sec_three_img"
+                  />
+                  <div class="sec_three_ab_content text-center">
+                    <span class="text-white">for</span
+                    ><span class="green_color"> Creators</span>
+                    <p class="text-center">Build a loyal following</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .top_one_four {
+        background-color: #000;
+        padding-bottom: 60px;
+      }
+      .welcome-section-svg-5 {
+        max-width: 450px;
+        position: relative;
+      }
+      .new_four_svg {
+        position: absolute;
+        bottom: 0%;
+        left: 10%;
+        width: 400px;
+      }
+      .four_right h2 {
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+    <div class="top_one_four">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto mb-4">
+            <div class="sec_four_svg">
+              <svg
+                class="welcome-section-svg-5"
+                width="575px"
+                height="456px"
+                viewBox="0 0 675 456"
+              >
+                <defs>
+                  <linearGradient
+                    x1="50%"
+                    y1="0%"
+                    x2="50%"
+                    y2="100%"
+                    id="linearGradient-5"
+                  >
+                    <stop stop-color="#00B1FF" offset="0%"></stop>
+                    <stop stop-color="#007BDF" offset="100%"></stop>
+                  </linearGradient>
+                </defs>
+                <g
+                  id="welcome-svg-5"
+                  transform="translate(-129.000000, -1180.000000)"
+                  fill="url(#linearGradient-5)"
+                >
+                  <path
+                    d="M483.532824,1551.31377 C577.344425,1551.31377 658.337852,1750.00922 776.864188,1419.1344 C895.390524,1088.25958 600.242233,1346.46715 382.060638,1217.02787 C163.879042,1087.5886 89.5030678,1322.45039 148.418795,1536.81668 C207.334523,1751.18297 389.721224,1551.31377 483.532824,1551.31377 Z"
+                    id="Oval5"
+                  ></path>
+                </g>
+              </svg>
+              <img
+                src="https://st.toneden.io/production/images/new-landing/screens/nederlander.png"
+                alt=""
+                class="new_four_svg"
+              />
+            </div>
+          </div>
+          <div class="col-md-6 four_right my-auto text-center">
+            <h2>Let's work <span class="green_color">together</span>.</h2>
+            <p class="text-muted">
+              Thousands of brands like you are using ToneDen every day to
+              <b><span class="text-white">grow faster</span></b
+              >.
+            </p>
+            <a href="#" class="btn green_btn">Meet Our Customers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .top_one_five {
+        background-color: #000;
+        padding: 50px 0px;
+      }
+      .rat_img {
+        width: 250px;
+      }
+      .top_one_five {
+        position: relative;
+      }
+      .five_img_img {
+        position: absolute;
+        bottom: 0;
+        left: 20%;
+      }
+      @media only screen and (min-width: 600px) {
+        .five_img_img {
+          position: absolute;
+          bottom: 0;
+          left: 40%;
+        }
+      }
+    </style>
+
+    <div class="top_one_five">
+      <div class="five_img mx-auto text-center">
+        <hr class="bg-white" />
+        <div class="five_img_img">
+          <img
+            src="https://st.toneden.io/production/images/new-landing/friends/w-b.png"
+            alt=""
+            class="img-fluid text-center rat_img"
+          />
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .top_one_six {
+        background-color: #000;
+      }
+    </style>
+
+    <section class="top_one_six py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h2 class="text-white">Get started for free.</h2>
+            <p class="text-muted">
+              It takes less than a minute to become a marketing superhero
+            </p>
+          </div>
+          <div class="col-md-4">
+            <a href="#" class="btn green_btn">Create a Free Account</a>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-white" />
+    </section>
+
+    <style>
+      footer {
+        background-color: #131212;
+        padding: 50px 0px;
+      }
+      footer h6 {
+        color: green;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      footer a {
+        display: block;
+        color: #fff;
+        margin-bottom: 15px;
+        text-decoration: none;
+      }
+      footer a:hover {
+        color: green;
+        text-decoration: none !important;
+      }
+      .anandha {
+        border-radius: 5px;
+        padding: 1px 3px;
+      }
+    </style>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-6 mb-4">
+            <div class="footer_one">
+              <h6>ABOUT US</h6>
+              <a href="#">We're Hiring 🚀</a>
+              <a href="#">Our Team</a>
+              <a href="#">Our Customers</a>
+              <a href="#">Our Blog</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6 mb-4">
+            <div class="footer_one">
+              <h6>WHAT WE DO</h6>
+              <a href="#">Why Toneden?</a>
+              <a href="#"
+                >Play Books <span class="bg-info anandha">NEW</span></a
+              >
+              <a href="#">Advertising Platform</a>
+              <a href="#">Growth tools</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6 mb-4">
+            <div class="footer_one">
+              <h6>RESOURCES</h6>
+              <a href="#">Pricing</a>
+              <a href="#">For Creators</a>
+              <a href="#">For event Marketors</a>
+              <a href="#">For E-commerce Brands</a>
+              <a href="#">Help Center</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-6 mb-4">
+            <div class="footer_one">
+              <h6>FROM THE BLOG</h6>
+              <a href="#">Announcing Playbooks</a>
+              <p class="text-muted">
+                See why we built an entirely new kind of campaign.
+              </p>
+              <a href="#"><b>Read More</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-white" />
+    </footer>
+
+    <style>
+      .bottom_footer {
+        background-color: #000;
+        text-align: center;
+      }
+      .bottom_footer a {
+        color: green;
+        padding-right: 10px;
+      }
+      .bottom_footer .fab {
+        color: #fff;
+        margin-right: 30px;
+      }
+    </style>
+    <div class="bottom_footer py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact Us</a>
+          </div>
+          <div class="col-md-6">
+            <i class="fab fa-facebook-messenger"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script>
+      ;(function ($) {
+        'use strict'
+
+        // Mobile Navigation
+        if ($('.main-nav').length) {
+          var $mobile_nav = $('.main-nav').clone().prop({
+            class: 'mobile-nav d-lg-none',
+          })
+          $('body').append($mobile_nav)
+          $('body').prepend(
+            '<button type="button" class="mobile-nav-toggle d-lg-none"><i class="fa fa-bars"></i></button>'
+          )
+          $('body').append('<div class="mobile-nav-overly"></div>')
+
+          $(document).on('click', '.mobile-nav-toggle', function (e) {
+            $('body').toggleClass('mobile-nav-active')
+            $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars')
+            $('.mobile-nav-overly').toggle()
+          })
+
+          $(document).on('click', '.mobile-nav .drop-down > a', function (e) {
+            e.preventDefault()
+            $(this).next().slideToggle(300)
+            $(this).parent().toggleClass('active')
+          })
+
+          $(document).click(function (e) {
+            var container = $('.mobile-nav, .mobile-nav-toggle')
+            if (
+              !container.is(e.target) &&
+              container.has(e.target).length === 0
+            ) {
+              if ($('body').hasClass('mobile-nav-active')) {
+                $('body').removeClass('mobile-nav-active')
+                $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars')
+                $('.mobile-nav-overly').fadeOut()
+              }
+            }
+          })
+        } else if ($('.mobile-nav, .mobile-nav-toggle').length) {
+          $('.mobile-nav, .mobile-nav-toggle').hide()
+        }
+      })(jQuery)
+    </script>
+  </body>
+</html>

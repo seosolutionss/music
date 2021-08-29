@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music world</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url('./images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .center_part {
+        display: grid;
+        place-items: center;
+      }
+
+      .gold {
+        background-color: #121212;
+        padding: 0px 5px;
+      }
+
+      body h1 {
+        color: #fff;
+        font-size: 21px;
+        font-weight: 600;
+        margin: 1rem 0 0.5rem;
+        text-align: center;
+      }
+
+      body h2 {
+        color: #ccc;
+        font-size: 15px;
+        font-weight: 400;
+        margin: 0;
+        width: 250px;
+        text-align: center;
+        margin: 0px auto;
+      }
+
+      @media only screen and (max-width: 600px) {
+        body {
+          background-image: url('https://images.unsplash.com/photo-1513569771920-c9e1d31714af?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjBiYWNrZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+
+      .svg_link{
+        width: 12px;
+        color: #fff !important;
+        background-color: #fff;
+      }
+      .view{
+        border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: right;
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+    width: 100%;
+    padding: 0px 10px;
+      }
+      .box_one{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 10px;
+      }
+
+      .box_one:hover .view{
+        color: #00c4ff;
+    text-shadow: 0 0 15px #00c4ff;
+      }
+      .box_one:hover .fa-play-circle{
+            color: #00c4ff;
+    text-shadow: 0 0 15px #00c4ff;
+      }
+
+      .social_image{
+        max-height: 30px;
+    max-width: 100px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+      body{
+        /* position: relative; */
+        background-color: rgba(0, 0, 0, 0.953);
+      }
+
+  
+      .ownwe_top{
+        position: fixed;
+        right: 2%;
+        bottom: 3%;
+    border: 1px solid rgba(255,255,255,.1);
+    color: #fff!important;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 0 0 4px rgb(0 0 0 / 60%);
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+      }
+
+ 
+
+
+      .privacy_policy{
+        position: fixed;
+        left: 2%;
+        bottom: 3%;
+        color: #fff;
+       font-size: 8px !important;
+       text-transform: capitalize;
+       width: 140px;
+      }
+
+      .privacy_link{
+       border: 1px solid rgba(255,255,255,.1);
+    color: #fff!important;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 0 0 4px rgb(0 0 0 / 60%);
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+    width: 200px;
+        font-size: 10px !important;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .privacy_policy{
+          font-size: 12px !important;
+          width: 200px;
+        }
+      }
+
+      .link-options-header {
+    background: #121212;
+    border-bottom: 1px solid goldenrod;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+.link-options-triangle-back {
+    border-color: goldenrod transparent transparent;
+    border-style: solid;
+    border-width: 10px 10px 0;
+    height: 0;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 0;
+    z-index: 9;
+}
+.link-options-triangle {
+    border-color: goldenrod transparent transparent;
+    border-style: solid;
+    border-width: 8px 8px 2px;
+    height: 0;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 0;
+    z-index: 10;
+}
+span{
+  backface-visibility: hidden;
+}
+
+.gold_line{
+  color: rgb(242, 227, 13) !important;
+  background-color: rgb(247, 197, 0);
+}
+
+.music_boy{
+ max-width: 300px;
+ display: block;
+}
+
+.fa-play-circle{
+ color: #fff;
+}
+
+.social_icons{
+ text-align: center;
+}
+
+.social_icons .fab{
+ color: #fff;
+ padding-right: 10px;
+ transition: transform .2s;
+}
+
+.social_icons .fab:hover{
+ transform: scale(1.1);
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="bg_color">
+      <div class="center_part">
+        <div class="gold">
+          <img
+          class="music_boy"
+            src="https://ar.toneden.io/31747789/40c40c35-3727-4939-b82b-2f1061b12197"
+            alt="music boy"
+          />
+          <h1>Lofi Girl</h1>
+          <h2>Beats to Study/Relax/Sleep to</h2>
+  
+
+          <div class="col col-lg-12 col-sm-12 link-options-header"><div class="link-options-triangle-back"></div><div class="link-options-triangle"></div></div>
+         
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/db4adeda-bf53-42d0-8555-0996dc9b4835" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://st.toneden.io/production/images/link-services/apple-music.png" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://st.toneden.io/production/images/link-services/youtube.png" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/4cb24978-734d-4572-9962-aad92b783ec2" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/edfa3b07-1dcd-45d0-9a4e-40c7b665c89b" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/19b7e331-786f-4695-9036-71dfcbd4d4eb" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/d2a9a15f-695e-4171-9788-eb922a0e22be" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/439dd5ca-24f9-41ee-9678-93ce5631ef4b" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/2c701115-6c09-4017-a60d-da3e7d60f278" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+          <div class="box_one">
+            <div class="box_left">
+              <a href="https://www.google.co.in/">
+              <img class="social_image" src="https://ar.toneden.io/31747789/dc266558-22eb-47a7-8cac-80a260fec022" alt="">
+              </a>
+            </div>
+            <div class="box_right">
+             <a href="https://www.google.co.in/">
+              <i class="far fa-play-circle" class="svg_link"></i>
+              <span class="view">Play</span>
+             </a>
+            </div>
+          </div>
+          <hr class="gold_line">
+
+        </div>
+      </div>
+
+      <div class="social_icons">
+     <a href="#"><i class="fab fa-instagram zoom"></i></a>
+       <a href="#"><i class="fab fa-twitter zoom"></i></a>
+       <a href="#"><i class="fab fa-facebook zoom"></i></a>
+      </div>
+
+    </div>
+
+
+
+    <div class="ownwe_top">
+      <div class="owner">
+      Presented By Rahul
+    </div>
+    </div>
+
+
+    <div class="privacy_policy">
+      <p>By using this service, you agree to the use of cookies.</p>
+       <a href="#" class="privacy_link">Manage Privacy</a>
+    </div>
+
+  </body>
+</html>
